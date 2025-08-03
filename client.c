@@ -6,7 +6,7 @@
 /*   By: mcharret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 15:35:11 by mcharret          #+#    #+#             */
-/*   Updated: 2025/08/03 16:14:31 by mcharret         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:19:37 by mcharret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		return (write(STDERR_FILENO, "./client PID \"message\"\n", 23));
 	signal(SIGUSR1, signal_handler);
 	pid = (pid_t)ft_atoi(argv[1]);
-	if (pid <= 0)
+	if (pid <= 0 || pid > 4194304)
 		return (write(STDERR_FILENO, "Invalid PID\n", 12));
 	i = 0;
 	while (argv[2][i])
