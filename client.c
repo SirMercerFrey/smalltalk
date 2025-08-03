@@ -6,7 +6,7 @@
 /*   By: mcharret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 15:35:11 by mcharret          #+#    #+#             */
-/*   Updated: 2025/08/03 16:00:21 by mcharret         ###   ########.fr       */
+/*   Updated: 2025/08/03 16:14:31 by mcharret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	send_char_signals(pid_t pid, char c)
 		else
 			kill(pid, SIGUSR1);
 		--i;
-		usleep(100);
+		usleep(500);
 	}
 }
 
