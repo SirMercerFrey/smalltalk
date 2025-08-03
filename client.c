@@ -38,7 +38,7 @@ void	send_char_signals(pid_t pid, char c)
 		else
 			kill(pid, SIGUSR1);
 		--i;
-		usleep(1000);
+		usleep(500);
 	}
 }
 

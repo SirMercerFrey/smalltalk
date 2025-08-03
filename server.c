@@ -19,7 +19,6 @@ int	main(void)
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
 	reinitialize_morse();
-//	print_g_morse();
 	free(pid);
 	while (1)
 		pause();
@@ -60,11 +59,9 @@ void	fill_byte(int signum, int n, pid_t link)
 	if (i == 7 && n == 0)
 	{
 		expected_bytes = nbr_bytes();
-//		printf("expected_bytes = %d\n", expected_bytes);
 	}
 	if (expected_bytes && i == 7 && (n + 1) == expected_bytes)
 	{
-//		print_g_morse();
 		print_byte(expected_bytes, link);
 		reinitialize_morse();
 		expected_bytes = 0;
@@ -85,7 +82,6 @@ void	print_byte(int n, pid_t link)
 		j = 0;
 		while (j < 8)
 			bit = bit * 2 + g_morse[i][j++];
-//		printf("bit = %d\n", bit);
 		str[i++] = (char)bit;
 	}
 	write(STDOUT_FILENO, str, n);
@@ -94,17 +90,4 @@ void	print_byte(int n, pid_t link)
 		write(STDOUT_FILENO, "\n", 1);
 		kill(link, SIGUSR1);
 	}
-}
-
-void print_g_morse(void)
-{
-    int i, j;
-    for (i = 0; i < 4; i++)
-    {
-        for (j = 0; j < 9; j++)
-        {
-            printf("%d ", g_morse[i][j]);
-        }
-        printf("\n");
-    }
 }
