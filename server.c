@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcharret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/03 15:39:29 by mcharret          #+#    #+#             */
+/*   Updated: 2025/08/03 15:40:21 by mcharret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "smalltalk.h"
 
 volatile int	g_morse[4][9];
@@ -23,11 +35,11 @@ int	main(void)
 	while (1)
 		pause();
 	return (0);
-} 	
+}
 
 void	sigaction_handler(int signum, siginfo_t *info, void *more_info)
 {
-	static	pid_t	link;
+	static pid_t	link;
 
 	(void)more_info;
 	if (info->si_pid)
@@ -67,7 +79,7 @@ void	fill_byte(int signum, int n, pid_t link)
 		expected_bytes = 0;
 	}
 }
-	
+
 void	print_byte(int n, pid_t link)
 {
 	int		bit;

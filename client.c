@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcharret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/03 15:35:11 by mcharret          #+#    #+#             */
+/*   Updated: 2025/08/03 16:00:21 by mcharret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "smalltalk.h"
 
 volatile int	g_received;
@@ -13,7 +25,7 @@ int	main(int argc, char **argv)
 	signal(SIGUSR1, signal_handler);
 	pid = (pid_t)ft_atoi(argv[1]);
 	if (pid <= 0)
-    	return (write(STDERR_FILENO, "Invalid PID\n", 12));	
+		return (write(STDERR_FILENO, "Invalid PID\n", 12));
 	i = 0;
 	while (argv[2][i])
 	{
@@ -38,7 +50,7 @@ void	send_char_signals(pid_t pid, char c)
 		else
 			kill(pid, SIGUSR1);
 		--i;
-		usleep(500);
+		usleep(100);
 	}
 }
 
